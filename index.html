@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1E3A8A">
+<title>Alpha | Online Shopping & Gifting</title>
+<style>
+:root {
+  --red:#E11D2C;
+  --blue:#1E3A8A;
+  --dark:#111827;
+  --light:#F7F8FC;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;font-family:Inter,Arial,sans-serif;
+  color:var(--dark);background:var(--light);
+}
+header{
+  background:white;padding:16px 5%;
+  display:flex;justify-content:space-between;
+  align-items:center;position:sticky;top:0;
+  z-index:10;box-shadow:0 2px 12px #0000000d;
+}
+.logo{font-size:27px;font-weight:900;color:var(--blue)}
+.logo span{color:var(--red)}
+nav{display:flex;gap:18px;align-items:center}
+nav a{text-decoration:none;color:var(--dark);font-size:13px}
+.cart{background:var(--red);color:white;padding:10px 15px;border-radius:25px}
+.hero{
+  margin:20px auto;width:90%;padding:48px 28px;
+  border-radius:22px;background:linear-gradient(120deg,#1E3A8A,#263d76);
+  color:white;overflow:hidden;animation:appear .8s ease;
+}
+.hero h1{font-size:clamp(32px,6vw,55px);margin:0 0 14px}
+.hero p{font-size:16px;line-height:1.6;max-width:450px}
+.hero button,.buy{
+  background:var(--red);border:0;color:white;
+  padding:13px 22px;border-radius:25px;
+  font-weight:bold;cursor:pointer;
+}
+.section{padding:20px 5%}
+.section h2{font-size:23px}
+.categories{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:12px
+}
+.category{
+  background:white;padding:20px 8px;border-radius:15px;
+  text-align:center;font-size:13px;font-weight:bold;
+  box-shadow:0 3px 12px #00000008;
+}
+.category span{display:block;font-size:28px;margin-bottom:8px}
+.products{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:15px
+}
+.product{
+  background:white;border-radius:16px;overflow:hidden;
+  box-shadow:0 3px 12px #00000009;
+  transition:transform .2s;
+}
+.product:hover{transform:translateY(-4px)}
+.product img{width:100%;height:165px;object-fit:cover;background:#eee}
+.details{padding:12px}
+.details h3{font-size:14px;margin:0 0 8px}
+.price{font-weight:900;color:var(--blue);margin-bottom:10px}
+footer{
+  margin-top:40px;background:#101827;color:white;
+  padding:35px 5%;text-align:center;
+}
+footer p{color:#cbd5e1;font-size:13px}
+@keyframes appear{
+  from{opacity:0;transform:translateY(15px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@media(min-width:750px){
+  .products{grid-template-columns:repeat(4,1fr)}
+  .categories{grid-template-columns:repeat(6,1fr)}
+  .hero{padding:75px}
+}
+@media(max-width:480px){
+  nav a:not(.cart){display:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Alpha<span>.</span></div>
+  <nav>
+    <a href="#categories">Categories</a>
+    <a href="#products">Shop</a>
+    <a class="cart" href="#products">Cart 🛒</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Make Every Moment Special.</h1>
+  <p>Discover amazing gifts, electronics, fashion and lifestyle products at Alpha.</p>
+  <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+    Shop Now →
+  </button>
+</section>
+
+<section class="section" id="categories">
+  <h2>Explore Categories</h2>
+  <div class="categories">
+    <div class="category"><span>🎁</span>Trending Gifts</div>
+    <div class="category"><span>📱</span>Electronics</div>
+    <div class="category"><span>👗</span>Fashion</div>
+    <div class="category"><span>🏠</span>Home & Living</div>
+    <div class="category"><span>🎂</span>Birthday Bundles</div>
+    <div class="category"><span>💎</span>Luxury</div>
+  </div>
+</section>
+
+<section class="section" id="products">
+  <h2>Discover Alpha</h2>
+  <p>Our latest products will appear here.</p>
+  <div class="products" id="product-list"></div>
+</section>
+
+<footer>
+  <h2>Alpha.</h2>
+  <p>ONLINE SHOPPING & GIFTING</p>
+  <p>UGX · Uganda</p>
+  <p>Free delivery to selected areas around Kampala.</p>
+  <p>Outside free-delivery areas: UGX 2,000 per started 3 km.</p>
+  <p>© 2026 Alpha. All rights reserved.</p>
+</footer>
+</body>
+</html>
