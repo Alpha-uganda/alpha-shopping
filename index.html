@@ -3,130 +3,212 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#1E3A8A">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101b39">
 <title>Alpha | Online Shopping & Gifting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root {
-  --red:#E11D2C;
-  --blue:#1E3A8A;
-  --dark:#111827;
-  --light:#F7F8FC;
+:root{
+ --red:#E11D2C;--blue:#1E3A8A;
+ --navy:#101b39;--white:#fff;--light:#f6f7fb;
 }
 *{box-sizing:border-box}
-body{
-  margin:0;font-family:Inter,Arial,sans-serif;
-  color:var(--dark);background:var(--light);
-}
-header{
-  background:white;padding:16px 5%;
-  display:flex;justify-content:space-between;
-  align-items:center;position:sticky;top:0;
-  z-index:10;box-shadow:0 2px 12px #0000000d;
-}
-.logo{font-size:27px;font-weight:900;color:var(--blue)}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,sans-serif;color:#151a28;background:white;overflow-x:hidden}
+button{font:inherit;cursor:pointer}
+a{text-decoration:none;color:inherit}
+.topbar{background:var(--navy);color:white;text-align:center;padding:9px;font-size:11px;letter-spacing:1px}
+header{height:75px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;background:#fff;position:sticky;top:0;z-index:30;box-shadow:0 3px 20px #101b3910}
+.logo{font-size:30px;font-weight:900;color:var(--blue);letter-spacing:-2px}
 .logo span{color:var(--red)}
-nav{display:flex;gap:18px;align-items:center}
-nav a{text-decoration:none;color:var(--dark);font-size:13px}
-.cart{background:var(--red);color:white;padding:10px 15px;border-radius:25px}
-.hero{
-  margin:20px auto;width:90%;padding:48px 28px;
-  border-radius:22px;background:linear-gradient(120deg,#1E3A8A,#263d76);
-  color:white;overflow:hidden;animation:appear .8s ease;
+.nav{display:flex;gap:28px;font-size:13px;font-weight:600}
+.nav a{transition:.25s}
+.nav a:hover{color:var(--red)}
+.actions{display:flex;align-items:center;gap:15px}
+.iconbtn{border:0;background:none;font-size:21px}
+.cart{background:var(--red);color:white;padding:11px 17px;border-radius:30px;font-size:12px;font-weight:700}
+.hero{min-height:560px;background:linear-gradient(90deg,#101b39 0%,#172c5c 55%,#1e3a8a 100%);position:relative;overflow:hidden;color:white;display:flex;align-items:center;padding:70px 8%}
+.hero:after{content:"";position:absolute;width:460px;height:460px;border:1px solid #ffffff30;border-radius:50%;right:-100px;top:30px;box-shadow:0 0 0 45px #ffffff08,0 0 0 90px #ffffff06}
+.hero-content{position:relative;z-index:2;max-width:570px;animation:heroIn 1s ease both}
+.eyebrow{color:#ffb7bd;font-size:11px;letter-spacing:3px;font-weight:700}
+.hero h1{font-size:clamp(42px,7vw,76px);line-height:1.04;letter-spacing:-4px;margin:20px 0}
+.hero h1 span{color:#ff626d}
+.hero p{font-size:15px;line-height:1.9;color:#d8dfef;max-width:420px}
+.primary{background:var(--red);color:white;border:0;border-radius:30px;padding:16px 27px;font-size:13px;font-weight:800;margin-top:18px;transition:.3s}
+.primary:hover{transform:translateY(-4px);box-shadow:0 12px 25px #e11d2c55}
+.hero-note{font-size:10px;color:#c9d3e9;margin-top:23px;letter-spacing:1px}
+.hero-decoration{position:absolute;right:10%;top:18%;width:300px;height:380px;border-radius:150px 150px 25px 25px;background:linear-gradient(145deg,#f7d8c6,#b77f73);opacity:.23;transform:rotate(8deg);animation:float 6s ease-in-out infinite}
+.hero-decoration:after{content:"A";position:absolute;font-size:220px;font-weight:900;color:white;opacity:.35;left:75px;top:55px}
+.section{padding:75px 6%}
+.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:28px}
+.kicker{color:var(--red);font-size:10px;font-weight:800;letter-spacing:2px}
+h2{font-size:clamp(25px,4vw,36px);letter-spacing:-1.5px;margin:9px 0}
+.sub{font-size:13px;color:#777e8e}
+.categories{display:grid;grid-template-columns:repeat(6,1fr);gap:13px}
+.category{padding:25px 10px;border:1px solid #eceef3;border-radius:17px;text-align:center;transition:.35s;background:white}
+.category:hover{transform:translateY(-8px);border-color:#e11d2c55;box-shadow:0 15px 30px #101b3910}
+.category .emoji{font-size:30px;display:block;margin-bottom:13px}
+.category strong{font-size:11px}
+.shop-section{background:var(--light)}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product{background:white;border-radius:17px;overflow:hidden;transition:.35s;position:relative}
+.product:hover{transform:translateY(-7px);box-shadow:0 15px 35px #101b3917}
+.product img{width:100%;height:250px;object-fit:cover;display:block;transition:transform .6s}
+.product:hover img{transform:scale(1.06)}
+.product-image{overflow:hidden;position:relative}
+.tag{position:absolute;top:12px;left:12px;background:var(--red);color:white;font-size:9px;padding:7px 10px;border-radius:20px;font-weight:800}
+.product-info{padding:16px}
+.product-info h3{font-size:13px;margin:0 0 9px}
+.price{color:var(--blue);font-size:14px;font-weight:900}
+.add{display:block;width:100%;margin-top:13px;background:var(--navy);color:white;border:0;border-radius:25px;padding:11px;font-size:11px;font-weight:700;transition:.3s}
+.add:hover{background:var(--red)}
+.promo{margin:30px 6%;padding:55px 8%;border-radius:24px;background:linear-gradient(120deg,#e11d2c,#a81734);color:white;overflow:hidden}
+.promo h2{font-size:clamp(28px,5vw,45px);max-width:500px}
+.promo p{font-size:13px;color:#ffe0e4}
+.promo button{background:white;color:var(--red);border:0;border-radius:30px;padding:14px 24px;font-weight:800;margin-top:12px}
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center}
+.benefit{padding:25px 10px}
+.benefit span{font-size:27px}
+.benefit h3{font-size:13px}
+.benefit p{font-size:11px;color:#777}
+footer{background:var(--navy);color:white;padding:55px 7% 25px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+footer p,footer a{font-size:12px;line-height:2;color:#c5cce0}
+footer h3{font-size:13px}
+.footer-bottom{border-top:1px solid #ffffff25;margin-top:30px;padding-top:20px;font-size:10px;color:#aeb9d2}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes heroIn{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(8deg)}50%{transform:translateY(-18px) rotate(5deg)}}
+@media(max-width:800px){
+ .nav{display:none}.hero{min-height:510px;padding:65px 7%}
+ .hero-decoration{right:-120px;opacity:.15}
+ .categories{grid-template-columns:repeat(3,1fr)}
+ .products{grid-template-columns:repeat(2,1fr);gap:12px}
+ .product img{height:190px}
+ .section{padding:55px 5%}
+ .footer-grid{grid-template-columns:1fr 1fr}
+ .footer-grid>div:first-child{grid-column:1/-1}
 }
-.hero h1{font-size:clamp(32px,6vw,55px);margin:0 0 14px}
-.hero p{font-size:16px;line-height:1.6;max-width:450px}
-.hero button,.buy{
-  background:var(--red);border:0;color:white;
-  padding:13px 22px;border-radius:25px;
-  font-weight:bold;cursor:pointer;
-}
-.section{padding:20px 5%}
-.section h2{font-size:23px}
-.categories{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:12px
-}
-.category{
-  background:white;padding:20px 8px;border-radius:15px;
-  text-align:center;font-size:13px;font-weight:bold;
-  box-shadow:0 3px 12px #00000008;
-}
-.category span{display:block;font-size:28px;margin-bottom:8px}
-.products{
-  display:grid;grid-template-columns:repeat(2,1fr);gap:15px
-}
-.product{
-  background:white;border-radius:16px;overflow:hidden;
-  box-shadow:0 3px 12px #00000009;
-  transition:transform .2s;
-}
-.product:hover{transform:translateY(-4px)}
-.product img{width:100%;height:165px;object-fit:cover;background:#eee}
-.details{padding:12px}
-.details h3{font-size:14px;margin:0 0 8px}
-.price{font-weight:900;color:var(--blue);margin-bottom:10px}
-footer{
-  margin-top:40px;background:#101827;color:white;
-  padding:35px 5%;text-align:center;
-}
-footer p{color:#cbd5e1;font-size:13px}
-@keyframes appear{
-  from{opacity:0;transform:translateY(15px)}
-  to{opacity:1;transform:translateY(0)}
-}
-@media(min-width:750px){
-  .products{grid-template-columns:repeat(4,1fr)}
-  .categories{grid-template-columns:repeat(6,1fr)}
-  .hero{padding:75px}
-}
-@media(max-width:480px){
-  nav a:not(.cart){display:none}
+@media(max-width:420px){
+ .hero h1{letter-spacing:-2px}
+ .products{gap:9px}
+ .product img{height:155px}
+ .product-info{padding:11px}
+ .categories{gap:8px}
+ .category{padding:18px 5px}
+ .category strong{font-size:10px}
+ .cart{padding:10px 12px}
 }
 </style>
 </head>
 <body>
+<div class="topbar">ONLINE SHOPPING & GIFTING · UGANDA</div>
 <header>
-  <div class="logo">Alpha<span>.</span></div>
-  <nav>
-    <a href="#categories">Categories</a>
-    <a href="#products">Shop</a>
-    <a class="cart" href="#products">Cart 🛒</a>
-  </nav>
+ <a class="logo" href="#">Alpha<span>.</span></a>
+ <nav class="nav">
+  <a href="#categories">Categories</a>
+  <a href="#shop">Shop</a>
+  <a href="#offers">Special Offers</a>
+  <a href="#about">About Alpha</a>
+ </nav>
+ <div class="actions">
+  <button class="iconbtn" aria-label="Search">⌕</button>
+  <a class="cart" href="#shop">CART 🛒 <span id="count">0</span></a>
+ </div>
 </header>
 
 <section class="hero">
-  <h1>Make Every Moment Special.</h1>
-  <p>Discover amazing gifts, electronics, fashion and lifestyle products at Alpha.</p>
-  <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
-    Shop Now →
-  </button>
+ <div class="hero-content">
+  <div class="eyebrow">DISCOVER SOMETHING SPECIAL</div>
+  <h1>Shopping that<br>feels <span>different.</span></h1>
+  <p>Discover thoughtful gifts, stylish fashion, electronics and beautiful finds. Your next favourite thing is waiting at Alpha.</p>
+  <button class="primary" onclick="document.querySelector('#shop').scrollIntoView({behavior:'smooth'})">EXPLORE COLLECTION →</button>
+  <div class="hero-note">CURATED FINDS · GREAT GIFTING · UGX PRICES</div>
+ </div>
+ <div class="hero-decoration"></div>
 </section>
 
-<section class="section" id="categories">
-  <h2>Explore Categories</h2>
-  <div class="categories">
-    <div class="category"><span>🎁</span>Trending Gifts</div>
-    <div class="category"><span>📱</span>Electronics</div>
-    <div class="category"><span>👗</span>Fashion</div>
-    <div class="category"><span>🏠</span>Home & Living</div>
-    <div class="category"><span>🎂</span>Birthday Bundles</div>
-    <div class="category"><span>💎</span>Luxury</div>
-  </div>
+<section class="section reveal" id="categories">
+ <div class="section-head">
+  <div><div class="kicker">FIND YOUR STYLE</div><h2>Explore Categories</h2><div class="sub">A little something for every moment.</div></div>
+ </div>
+ <div class="categories">
+  <a class="category" href="#shop"><span class="emoji">🎁</span><strong>Trending Gifts</strong></a>
+  <a class="category" href="#shop"><span class="emoji">📱</span><strong>Electronics</strong></a>
+  <a class="category" href="#shop"><span class="emoji">👗</span><strong>Fashion</strong></a>
+  <a class="category" href="#shop"><span class="emoji">🏠</span><strong>Home & Living</strong></a>
+  <a class="category" href="#shop"><span class="emoji">🎂</span><strong>Birthday Bundles</strong></a>
+  <a class="category" href="#shop"><span class="emoji">💎</span><strong>Luxury</strong></a>
+ </div>
 </section>
 
-<section class="section" id="products">
-  <h2>Discover Alpha</h2>
-  <p>Our latest products will appear here.</p>
-  <div class="products" id="product-list"></div>
+<section class="section shop-section reveal" id="shop">
+ <div class="section-head">
+  <div><div class="kicker">THE ALPHA EDIT</div><h2>Discover our picks</h2><div class="sub">A preview of what's coming to Alpha.</div></div>
+ </div>
+ <div class="products">
+  <article class="product">
+   <div class="product-image"><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=700&q=80" alt="Fashion handbag"><span class="tag">TRENDING</span></div>
+   <div class="product-info"><h3>Classic Style Bag</h3><div class="price">UGX —</div><button class="add" onclick="demoCart()">ADD TO CART +</button></div>
+  </article>
+  <article class="product">
+   <div class="product-image"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80" alt="Watch"><span class="tag">FEATURED</span></div>
+   <div class="product-info"><h3>Classic Wristwatch</h3><div class="price">UGX —</div><button class="add" onclick="demoCart()">ADD TO CART +</button></div>
+  </article>
+  <article class="product">
+   <div class="product-image"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80" alt="Sneakers"></div>
+   <div class="product-info"><h3>Everyday Sneakers</h3><div class="price">UGX —</div><button class="add" onclick="demoCart()">ADD TO CART +</button></div>
+  </article>
+  <article class="product">
+   <div class="product-image"><img src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=700&q=80" alt="Gift box"><span class="tag">GIFT IDEA</span></div>
+   <div class="product-info"><h3>Special Gift Box</h3><div class="price">UGX —</div><button class="add" onclick="demoCart()">ADD TO CART +</button></div>
+  </article>
+ </div>
+ <p class="sub" style="margin-top:20px">Sample display only. Real products and prices will be connected to Alpha's catalogue.</p>
+</section>
+
+<section class="promo reveal" id="offers">
+ <div class="kicker" style="color:#ffe0e4">MAKE SOMEONE SMILE</div>
+ <h2>Make every occasion unforgettable.</h2>
+ <p>Find thoughtful gifts for birthdays, celebrations and the people who matter.</p>
+ <button onclick="document.querySelector('#shop').scrollIntoView({behavior:'smooth'})">EXPLORE GIFT IDEAS →</button>
+</section>
+
+<section class="section reveal" id="about">
+ <div class="section-head"><div><div class="kicker">THE ALPHA PROMISE</div><h2>A better way to shop.</h2></div></div>
+ <div class="benefits">
+  <div class="benefit"><span>🎁</span><h3>Thoughtful Gifting</h3><p>Discover gifts for every special moment.</p></div>
+  <div class="benefit"><span>🚚</span><h3>Convenient Delivery</h3><p>Free delivery in selected areas around Kampala. Outside those areas, UGX 2,000 per started 3 km.</p></div>
+  <div class="benefit"><span>✨</span><h3>Curated Collections</h3><p>Discover exciting finds across our categories.</p></div>
+ </div>
 </section>
 
 <footer>
-  <h2>Alpha.</h2>
-  <p>ONLINE SHOPPING & GIFTING</p>
-  <p>UGX · Uganda</p>
-  <p>Free delivery to selected areas around Kampala.</p>
-  <p>Outside free-delivery areas: UGX 2,000 per started 3 km.</p>
-  <p>© 2026 Alpha. All rights reserved.</p>
+ <div class="footer-grid">
+  <div><a class="logo" style="color:white" href="#">Alpha<span>.</span></a><p>ONLINE SHOPPING & GIFTING</p><p>Discover more. Gift better. Shop Alpha.</p></div>
+  <div><h3>Explore</h3><p><a href="#categories">Categories</a><br><a href="#shop">Shop</a><br><a href="#offers">Special Offers</a></p></div>
+  <div><h3>Customer Care</h3><p>Support<br>Delivery information<br>Returns & refunds</p></div>
+ </div>
+ <div class="footer-bottom">© 2026 Alpha. All rights reserved. Uganda.</div>
 </footer>
+
+<script>
+let cartCount=0;
+function demoCart(){
+ cartCount++;
+ document.getElementById('count').textContent=cartCount;
+}
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   entry.target.classList.add('visible');
+   observer.unobserve(entry.target);
+  }
+ });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
 </body>
 </html>
