@@ -221,5 +221,29 @@ const alphaDB = supabase.createClient(
   SUPABASE_KEY
 );
 </script>
+ <div id="alpha-connection-test" style="position:fixed;bottom:15px;left:15px;background:#1E3A8A;color:white;padding:12px;border-radius:10px;z-index:9999;">
+Checking Alpha database...
+</div>
+
+<script>
+(async function () {
+  const status = document.getElementById("alpha-connection-test");
+
+  try {
+    const { data, error } = await alphaDB
+      .from("categories")
+      .select("*")
+      .limit(1);
+
+    if (error) throw error;
+
+    status.textContent = "Alpha database connected!";
+    status.style.background = "green";
+  } catch (error) {
+    status.textContent = "Connection failed: " + error.message;
+    status.style.background = "red";
+  }
+})();
+</script>
 </body>
 </html>
