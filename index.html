@@ -230,5 +230,79 @@ Checking Alpha database...
   }
 })();
 </script>
+ 
+<script>
+async function loadAlphaProducts() {
+  const container = document.getElementById("live-products");
+
+  if (!container) return;
+
+  container.innerHTML = "<p>Loading products...</p>";
+
+  try {
+    const { data, error } = await alphaDB
+      .from("products")
+      .select("name, description, price, stock_quantity, image_url, is_active")
+      .eq("is_active", true);
+
+    if (error) throw error;
+
+    if (!data || data.length === 0) {
+      container.innerHTML = "<p>No products available yet.</p>";
+      return;
+    }
+
+    container.innerHTML = data.map(product => {
+      const name = String(product.name || "Product")
+        .replace(/[&<>"']/g, c => ({
+          "&": "&amp;", "<": "&lt;", ">": "&gt;",
+          '"': "&quot;", "'": "&#39;"
+        })[c]);
+
+      const description = String(product.description || "")
+        .replace(/[&<>"']/g, c => ({
+          "&": "&amp;", "<": "&lt;", ">": "&gt;",
+          '"': "&quot;", "'": "&#39;"
+        })[c]);
+
+      const price = Number(product.price || 0);
+      const image = product.image_url;
+
+      const imageHTML = image
+        ? `<img src="${String(image).replace(/"/g, "&quot;")}"
+             alt="${name}" loading="lazy">`
+        : `<div style="padding:55px 10px;text-align:center">
+             Image coming soon
+           </div>`;
+
+      return `
+        <article class="product">
+          <div class="product-image">
+            ${imageHTML}
+            <span class="tag">ALPHA PICK</span>
+          </div>
+          <div class="product-info">
+            <h3>${name}</h3>
+            <div class="price">
+              UGX ${price.toLocaleString("en-UG")}
+            </div>
+            <p>${description}</p>
+            <button class="add" onclick="demoCart()">
+              ADD TO CART +
+            </button>
+          </div>
+        </article>
+      `;
+    }).join("");
+
+  } catch (error) {
+    console.error("Alpha product error:", error);
+    container.innerHTML =
+      "<p>Unable to load products. Please try again.</p>";
+  }
+}
+
+loadAlphaProducts();
+</script>
 </body>
 </html>
